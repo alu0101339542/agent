@@ -1,9 +1,9 @@
-# Open port 51337
-New-NetFirewallRule -DisplayName "Open Port 51337" -Direction Inbound -LocalPort 51337 -Protocol TCP -Action Allow
+# Abrir puerto 51337
+New-NetFirewallRule -DisplayName "Discovery Agent" -Direction Inbound -LocalPort 51337 -Protocol TCP -Action Allow
 
-# Get current directory and MSI package path
+# Buscar el agente en el directorio actual
 $dir = Get-Location
 $agent = "$dir\Discovery_Agent_Setup_x64.msi"
 
-# Install MSI package
+# Instalar el MSI
 Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$agent`" /quiet" -Wait
